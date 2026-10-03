@@ -29,7 +29,7 @@ The form checks its fields in the browser. When they are valid, it shows **За�
 
 ## Yandex Metrika
 
-No Metrika counter is installed. Add its script to `index.html` when you have the counter ID. Do not add the counter ID until it is ready to use.
+The Yandex Metrika counter (ID `113366123`) is installed in `index.html`. The script is at the end of `<head>`. The `<noscript>` image is right after `<body>`. The counter only sends data when the page is opened from a real site (for example GitHub Pages), not from `file://`.
 
 ## Source
 
