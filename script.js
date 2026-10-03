@@ -461,6 +461,7 @@
 
   /* ---------- Lead form (front-end demo: nothing is sent) ---------- */
 
+  var METRIKA_ID = 113366123;
   var FIELDS = ['name', 'contact', 'project', 'message', 'consent'];
 
   function field(name) { return document.getElementById('lead-' + name); }
@@ -568,6 +569,7 @@
       renderChannel();
       renderFormRole();
       showDone(true);
+      if (typeof window.ym === 'function') window.ym(METRIKA_ID, 'reachGoal', 'lead_form_success');
     });
 
     form.addEventListener('input', function (event) {
