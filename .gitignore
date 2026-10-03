@@ -1,0 +1,12 @@
+# Browser test tool output
+.playwright-mcp/
+
+# Claude Code local files
+.claude/
+
+# Editor and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

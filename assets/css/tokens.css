@@ -1,0 +1,70 @@
+/* Клик Медиа v4 — design tokens.
+   #2BB3A3 — основной и визуально главный фирменный цвет: кнопки, выбранные
+   состояния, акценты, линии связей, фирменные объекты сцен. Тёмные оттенки
+   (ink / deep / strong) — только вспомогательные: текст, hover и мелкие
+   плашки, где нужен контраст. Оранжевый — только результат аукциона;
+   navy — внешний спрос и код. */
+:root {
+  --km-brand: #2BB3A3;
+  --km-brand-hover: #1F9A8C;
+  --km-brand-ink: #117A6E;
+  --km-brand-deep: #0C4F48;
+  --km-brand-soft: #E4F5F2;
+  --km-brand-tint: #E6F6F3;
+  --km-brand-mist: #9ED9D0;
+  /* Вспомогательный тёмный зелёный — только для мелких плашек с белым
+     текстом (номера шагов): белый на #2BB3A3 ≈ 2,6:1, на --km-brand-strong
+     ≈ 4,85:1 (WCAG AA). Не заменяет #2BB3A3 как фирменный цвет. */
+  --km-brand-strong: #1A7F73;
+
+  --km-winner: #E0661B;
+  --km-winner-soft: #FDEEE2;
+  --km-winner-bg: #FFF6EF;
+  --km-winner-ink: #9C420A;
+
+  --km-navy: #16233A;
+  --km-navy-soft: #F1F4F9;
+  --km-ink: #17211F;
+
+  --km-canvas: #F6F9F8;
+  --km-surface: #FFFFFF;
+  --km-surface-2: #EEF5F3;
+  --km-surface-3: #F2F7F6;
+  --km-line: #DCE6E3;
+  --km-line-soft: #E6EEEC;
+  --km-line-faint: #EDF2F1;
+  --km-line-strong: #C9D8D4;
+
+  --km-text: #17211F;
+  --km-text-2: #33403D;
+  --km-text-3: #44504D;
+  --km-text-lead: #4E5A57;
+  --km-text-muted: #56625F;
+  --km-text-soft: #66726F;
+  --km-text-faint: #8A9693;
+
+  --km-font: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --km-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --km-ease: cubic-bezier(.2, .8, .2, 1);
+  --km-radius-s: 5px;
+  --km-radius: 8px;
+  --km-radius-l: 10px;
+
+  --km-container: 1280px;
+  --km-gutter: clamp(16px, 5vw, 80px);
+  --km-header-h: 76px;
+  --km-section-y: clamp(64px, 8vw, 104px);
+}
+
+@media (max-width: 1179px) {
+  :root { --km-header-h: 64px; }
+}
+
+@media (max-width: 1023px) {
+  :root { --km-section-y: clamp(56px, 7vw, 72px); }
+}
+
+@media (max-width: 767px) {
+  :root { --km-section-y: 52px; }
+}

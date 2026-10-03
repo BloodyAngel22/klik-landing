@@ -1,0 +1,163 @@
+/* From SiteHeader.vue; Vue scope markers are not needed on the static page. */
+.km-header {
+  position: sticky; top: 0; z-index: 50;
+  height: var(--km-header-h);
+  background: rgba(246, 249, 248, .92);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid #E3EBE9;
+}
+.km-header__row { height: 100%; display: flex; align-items: center; gap: 44px; }
+.km-header__brand {
+  display: flex; align-items: center; gap: 12px; flex: none;
+  text-decoration: none; color: var(--km-text);
+  font-size: 21px; font-weight: 700; letter-spacing: -.02em;
+}
+.km-header__brand:hover { color: var(--km-text); }
+.km-header__brand img { width: 34px; height: 33px; display: block; }
+.km-header__nav { display: flex; align-items: center; gap: 30px; }
+.km-header__nav a {
+  padding: 8px 2px; font-size: 15px; font-weight: 500; color: var(--km-text-2);
+  text-decoration: none; white-space: nowrap;
+}
+.km-header__nav a:hover { color: var(--km-brand-deep); }
+.km-header__nav a[aria-current="page"] { color: var(--km-brand-deep); box-shadow: inset 0 -2px 0 var(--km-brand); }
+.km-header__actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.km-header__login-short { display: none; }
+.km-header__burger {
+  display: none; width: 44px; height: 44px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--km-text); cursor: pointer;
+  align-items: center; justify-content: center;
+}
+.km-header__burger:hover { background: #EAF1EF; }
+
+@media (max-width: 1279px) {
+  .km-header__row { gap: 32px; }
+  .km-header__nav { gap: 22px; }
+}
+@media (max-width: 1179px) {
+  .km-header__nav { display: none; }
+  .km-header__burger { display: inline-flex; }
+  .km-header__brand { font-size: 18px; gap: 10px; }
+  .km-header__brand img { width: 28px; height: 27px; }
+}
+@media (max-width: 479px) {
+  .km-header__row { padding-right: 8px; gap: 12px; }
+  .km-header__actions { gap: 4px; }
+  .km-header__login { padding: 0 14px; }
+  .km-header__login-full { display: none; }
+  .km-header__login-short { display: inline; }
+}
+
+/* From SiteFooter.vue; Vue scope markers are not needed on the static page. */
+.km-footer { background: var(--km-canvas); border-top: 1px solid #E3EBE9; padding-top: 56px; }
+.km-footer__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)) auto;
+  gap: 32px 48px;
+  padding-bottom: 40px;
+}
+.km-footer__brand { display: flex; flex-direction: column; gap: 14px; max-width: 340px; }
+.km-footer__brand p { font-size: 14px; line-height: 1.5; color: var(--km-text-muted); }
+.km-footer__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--km-text); font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+.km-footer__logo:hover { color: var(--km-text); }
+.km-footer__logo img { width: 30px; height: 29px; }
+.km-footer__socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.km-footer__social {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;
+  box-shadow: inset 0 0 0 1px var(--km-line-strong); background: #FFFFFF;
+  color: var(--km-text-2); text-decoration: none; transition: box-shadow .2s, color .2s, transform .2s;
+}
+.km-footer__social span { display: flex; width: 24px; height: 24px; }
+.km-footer__social.is-colored span { width: 22px; height: 22px; }
+.km-footer__social svg { width: 100%; height: 100%; display: block; }
+.km-footer__social:hover { box-shadow: inset 0 0 0 1.5px var(--km-brand); color: var(--km-brand-deep); transform: translateY(-2px); }
+.km-footer__col { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.km-footer__col .km-lbl { margin-bottom: 8px; }
+.km-footer__col a { padding: 5px 0; font-size: 14.5px; color: var(--km-text-2); text-decoration: none; }
+.km-footer__col a:hover { color: var(--km-brand-deep); }
+.km-footer__item { display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+.km-footer__item .km-ic { margin-top: 1px; color: var(--km-text-soft); transition: color .2s; }
+.km-footer__col a.km-footer__item:hover .km-ic { color: var(--km-brand-ink); }
+.km-footer__muted { padding: 5px 0; font-size: 13.5px; line-height: 1.45; color: var(--km-text-muted); }
+.km-footer__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.km-footer__accr { display: flex; align-items: center; gap: 10px; max-width: 180px; font-size: 13px; line-height: 1.35; color: var(--km-text-muted); text-decoration: none; }
+.km-footer__accr:hover { color: var(--km-brand-deep); }
+.km-footer__legal {
+  padding: 18px 0; border-top: 1px solid var(--km-line);
+  font-size: 13px; line-height: 1.6; color: var(--km-text-muted);
+}
+.km-footer__legal div { display: flex; flex-direction: column; gap: 2px; }
+.km-footer__legal strong { font-weight: 600; color: var(--km-text-2); }
+.km-footer__bottom {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  padding: 18px 0 28px; border-top: 1px solid var(--km-line);
+  font-size: 13.5px; color: var(--km-text-muted);
+}
+.km-footer__bottom a { color: var(--km-brand-ink); text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 1179px) {
+  .km-footer__main { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .km-footer__brand { grid-column: 1 / -1; max-width: 520px; }
+  .km-footer__cta { grid-column: 1 / -1; flex-direction: row; align-items: center; flex-wrap: wrap; }
+}
+@media (max-width: 767px) {
+  .km-footer { padding-top: 40px; }
+  .km-footer__main { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-bottom: 32px; }
+  .km-footer__col { gap: 2px; }
+  .km-footer__col .km-lbl { margin-bottom: 6px; }
+  .km-footer__col a { padding: 6px 0; font-size: 15px; }
+  .km-footer__bottom { flex-direction: column; }
+}
+
+/* From MobileNavModal.vue; Vue scope markers are not needed on the static page. */
+.km-mnav {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  background: rgba(23, 33, 31, .48);
+  overflow-y: auto;
+}
+.km-mnav__panel {
+  width: min(400px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+  padding: 8px 20px 20px;
+  border-radius: 16px;
+  background: #FFFFFF;
+  box-shadow: 0 30px 60px -20px rgba(12, 79, 72, .45), inset 0 0 0 1px var(--km-line);
+}
+.km-mnav__top {
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+  margin-right: -8px; border-bottom: 1px solid var(--km-line-soft);
+}
+.km-mnav__title { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.km-mnav__title img { width: 26px; height: 25px; }
+.km-mnav__close {
+  width: 44px; height: 44px; border: 0; border-radius: 8px; background: #F1F6F4;
+  color: var(--km-text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+}
+.km-mnav__close:hover { background: #E4EEEB; }
+.km-mnav__links { display: flex; flex-direction: column; padding-top: 4px; }
+.km-mnav__link {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  min-height: 56px; padding: 0 4px; border-bottom: 1px solid var(--km-line-faint);
+  font-size: 18px; font-weight: 600; color: var(--km-text); text-decoration: none;
+}
+.km-mnav__link:hover { color: var(--km-brand-deep); }
+.km-mnav__link .km-ic { color: var(--km-text-faint); }
+.km-mnav__here {
+  margin-left: auto; font-size: 12.5px; font-weight: 600; color: var(--km-brand-deep);
+  background: var(--km-brand-tint); padding: 4px 10px; border-radius: 20px;
+}
+.km-mnav__actions { display: flex; flex-direction: column; gap: 10px; padding-top: 20px; }
+
+.km-modal-enter-active, .km-modal-leave-active { transition: opacity .2s ease; }
+.km-modal-enter-active .km-mnav__panel, .km-modal-leave-active .km-mnav__panel { transition: transform .25s var(--km-ease); }
+.km-modal-enter-from, .km-modal-leave-to { opacity: 0; }
+.km-modal-enter-from .km-mnav__panel, .km-modal-leave-to .km-mnav__panel { transform: translateY(-12px) scale(.98); }
+
+/* From BrandWordmark.vue; Vue scope markers are not needed on the static page. */
+.km-wordmark { white-space: nowrap; }
+.km-wordmark__second { color: var(--km-brand); }

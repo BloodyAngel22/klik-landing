@@ -1,0 +1,295 @@
+@import './fonts.css';
+@import './tokens.css';
+
+/* ===== root scope =====
+   Всё новое оформление живёт внутри .km, чтобы не пересекаться со старыми
+   глобальными стилями блога (landing.css) и agency-страниц. */
+.km {
+  font-family: var(--km-font);
+  color: var(--km-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.4;
+}
+.km *, .km *::before, .km *::after { box-sizing: border-box; }
+.km :where(h1, h2, h3, h4, p, ol, ul, figure) { margin: 0; }
+.km :where(ol, ul) { padding: 0; list-style: none; }
+.km :where(button) { font-family: inherit; }
+.km :where(a) { color: var(--km-brand-ink); }
+.km :where(a:hover) { color: var(--km-brand-deep); }
+.km :focus-visible { outline: 2px solid var(--km-brand-ink); outline-offset: 3px; border-radius: 6px; }
+
+.km-page { background: var(--km-canvas); min-height: 100vh; overflow-x: clip; }
+
+.km-container {
+  width: 100%;
+  max-width: calc(var(--km-container) + 2 * var(--km-gutter));
+  margin-inline: auto;
+  padding-inline: var(--km-gutter);
+}
+
+.km-section { position: relative; padding-block: var(--km-section-y); scroll-margin-top: var(--km-header-h); }
+.km-section--tint { background: var(--km-surface-2); border-block: 1px solid #E0EAE7; }
+.km-section--line { border-top: 1px solid #E3EBE9; }
+.km-section--white { background: var(--km-surface); border-top: 1px solid #E3EBE9; }
+
+.km-sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ===== typography ===== */
+.km-mono { font-family: var(--km-mono); }
+.km-lbl {
+  font-family: var(--km-mono); font-size: 13px; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--km-text-muted);
+}
+.km-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--km-mono); font-size: 13px; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--km-brand-ink);
+}
+.km-eyebrow::before { content: ""; display: block; width: 18px; height: 1.5px; background: var(--km-brand); }
+.km-h2 {
+  font-size: clamp(30px, 3.3vw, 44px); line-height: 1.08; font-weight: 700;
+  letter-spacing: -.028em; color: var(--km-text); text-wrap: balance;
+}
+.km-lead { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.55; color: var(--km-text-lead); text-wrap: pretty; }
+
+/* ===== icons ===== */
+.km-ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ===== buttons =====
+   Основная кнопка — фирменный #2BB3A3, текст и иконки всегда белые
+   (тёмный текст на сплошном зелёном не используем). */
+.km-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 52px; padding: 0 22px; border-radius: var(--km-radius); border: 0;
+  font-family: var(--km-font); font-size: 16px; font-weight: 600; letter-spacing: -.005em; line-height: 1;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background .2s, box-shadow .2s, color .2s;
+}
+.km-btn--primary,
+.km-btn--primary:visited,
+.km-btn--primary:hover,
+.km-btn--primary:focus { color: #FFFFFF; }
+.km-btn--primary { background: var(--km-brand); box-shadow: inset 0 -2px 0 rgba(12, 79, 72, .28); }
+.km-btn--primary:hover { background: var(--km-brand-hover); }
+.km-btn--secondary { background: var(--km-surface); color: var(--km-text); box-shadow: inset 0 0 0 1px var(--km-line-strong); }
+.km-btn--secondary:hover { box-shadow: inset 0 0 0 1.5px var(--km-brand); color: var(--km-brand-deep); }
+.km-btn--ghost { height: 40px; padding: 0 14px; background: transparent; color: var(--km-text); font-weight: 500; font-size: 15px; }
+.km-btn--ghost:hover { background: #EAF1EF; color: var(--km-text); }
+.km-btn--sm { height: 40px; padding: 0 16px; font-size: 15px; border-radius: 7px; }
+.km-btn--block { width: 100%; }
+.km-btn[disabled] { cursor: not-allowed; opacity: .6; }
+
+/* ===== segmented control ===== */
+.km-seg { display: inline-flex; padding: 4px; gap: 2px; background: #E8F0EE; border-radius: 9px; max-width: 100%; }
+.km-seg button {
+  height: 40px; padding: 0 18px; border: 0; background: transparent; border-radius: 6px;
+  font-size: 15px; font-weight: 500; color: var(--km-text-2); cursor: pointer; white-space: nowrap;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.km-seg button:hover { color: var(--km-text); }
+.km-seg button[aria-pressed="true"],
+.km-seg button[aria-checked="true"],
+.km-seg button[aria-selected="true"] {
+  background: var(--km-surface); color: var(--km-text); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(23, 33, 31, .10), inset 0 0 0 1px #D6E2DF;
+}
+.km-seg--lg button { height: 46px; padding: 0 22px; font-size: 15.5px; }
+.km-seg--sm button { height: 32px; padding: 0 12px; font-size: 13.5px; }
+
+/* ===== static tags ===== */
+.km-tag {
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 6px;
+  background: #EEF4F2; font-size: 13.5px; font-weight: 500; color: var(--km-text-2); white-space: nowrap;
+}
+.km-tag--sm { height: 24px; padding: 0 8px; font-size: 12.5px; }
+.km-tag--line { background: var(--km-surface); box-shadow: inset 0 0 0 1px var(--km-line); }
+.km-tag--brand { background: var(--km-brand-soft); color: var(--km-brand-deep); }
+.km-tag--win { background: var(--km-winner-soft); color: var(--km-winner-ink); }
+.km-tag--navy { background: #1E2B3F; color: #E6EEF8; }
+
+.km-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex: none; background: var(--km-brand); }
+
+/* квадратная галочка — отметка «да» не только цветом */
+.km-tick {
+  display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+  border-radius: 4px; background: var(--km-brand); color: #FFFFFF; flex: none;
+}
+.km-tick--soft { background: var(--km-brand-soft); color: var(--km-brand-ink); }
+
+/* ===== KM SLAB — единая pseudo-3D система =====
+   Одна косоугольная проекция: вектор глубины (+d, −0.6d), свет сверху слева.
+   Верхняя грань светлее, правая — темнее, тень падает вниз вправо.
+   Грани — ::before/::after, толщина задаётся одной переменной --d.
+   Правый верхний угол лицевой грани всегда острый: там сходятся верхняя и
+   боковая грани, скругление давало бы «щель» между ними. Грани укорочены на
+   радиус, чтобы не торчать за скруглёнными углами. */
+.km-slab {
+  --d: 10px; --r: 5px;
+  --top: #F4F9F8; --side: #CCDCD8; --edge: #DCE6E3;
+  --ring: initial;
+  position: relative;
+  border-radius: var(--r) 0 var(--r) var(--r);
+  isolation: isolate;
+  transition: box-shadow .3s;
+}
+.km-slab::before {
+  content: ""; position: absolute; left: var(--r); bottom: 100%;
+  width: calc(100% - var(--r)); height: calc(var(--d) * .6);
+  background: var(--top); box-shadow: inset 0 0 0 1px var(--ring, var(--edge));
+  transform-origin: 0 100%; transform: skewX(-59.04deg); pointer-events: none; z-index: 0;
+  transition: box-shadow .3s;
+}
+.km-slab::after {
+  content: ""; position: absolute; left: 100%; top: 0;
+  width: var(--d); height: calc(100% - var(--r));
+  background: var(--side); box-shadow: inset 0 0 0 1px var(--ring, transparent);
+  transform-origin: 0 0; transform: skewY(-30.96deg); pointer-events: none; z-index: 0;
+  transition: box-shadow .3s;
+}
+/* Выделение объекта (фокус этапа, результат аукциона): задайте --ring.
+   Кольцо рисуется на лицевой грани, а кромки верхней и боковой граней
+   берут тот же цвет — выделен весь передний блок, а не «подложка» за ним.
+   Не использовать outline с outline-offset: он ложится за грани глубины. */
+.km-d-xs { --d: 4px; --r: 1px; }
+.km-d-s { --d: 7px; }
+.km-d-m { --d: 12px; }
+.km-d-l { --d: 18px; }
+.km-d-xl { --d: 26px; }
+@media (max-width: 767px) {
+  .km-d-m { --d: 9px; }
+  .km-d-l { --d: 12px; }
+  .km-d-xl { --d: 16px; }
+}
+
+/* материалы
+   Правило: на СПЛОШНОМ зелёном текст и иконки белые (SVG через currentColor).
+   Сплошной #2BB3A3 — для крупных и декоративных объектов; плашки с мелким
+   текстом — на --km-brand-strong. На светлых тинтованных фонах — тёмный текст. */
+.km-m-paper {
+  background: #FFFFFF; --top: #F7FBFA; --side: #CFDEDA; --edge: #DCE6E3;
+  box-shadow: inset 0 0 0 2px var(--ring, transparent), inset 0 0 0 1px #DCE6E3, 3px 5px 8px -3px rgba(12, 79, 72, .16), 22px 34px 54px -24px rgba(12, 79, 72, .30);
+}
+.km-m-tint {
+  background: #EDF6F4; --top: #F6FBFA; --side: #BCD6CF; --edge: #D2E3DF;
+  box-shadow: inset 0 0 0 2px var(--ring, transparent), inset 0 0 0 1px #D2E3DF, 3px 5px 8px -3px rgba(12, 79, 72, .14), 20px 30px 48px -24px rgba(12, 79, 72, .26);
+}
+.km-m-brand {
+  background: var(--km-brand); color: #FFFFFF; --top: #6CCFC3; --side: #1B8578; --edge: rgba(255, 255, 255, 0);
+  box-shadow: inset 0 0 0 2px var(--ring, transparent), 3px 5px 8px -3px rgba(12, 79, 72, .30), 24px 36px 56px -22px rgba(12, 79, 72, .42);
+}
+.km-m-ink {
+  background: var(--km-ink); --top: #3A4A46; --side: #070C0B; --edge: rgba(255, 255, 255, 0);
+  box-shadow: inset 0 0 0 2px var(--ring, transparent), 3px 5px 8px -3px rgba(7, 12, 11, .30), 24px 36px 56px -24px rgba(7, 12, 11, .42);
+}
+.km-m-floor { background: #D8E6E2; --top: #EEF5F3; --side: #C2D6D1; --edge: #DCE8E5; --r: 0px; box-shadow: none; }
+.km-m-floor::before {
+  background-color: #EEF5F3;
+  background-image: radial-gradient(circle, #C6D8D3 1.1px, transparent 1.4px);
+  background-size: 18px 18px;
+}
+/* «парящий» объект — сильнее тень, чем у лежащих на полу */
+.km-float {
+  box-shadow: inset 0 0 0 2px var(--ring, transparent), inset 0 0 0 1px #DCE6E3, 4px 7px 10px -4px rgba(12, 79, 72, .20), 30px 46px 60px -22px rgba(12, 79, 72, .34);
+}
+/* контактная тень: та же проекция, что и у верхней грани */
+.km-cshadow {
+  position: absolute; background: rgba(12, 79, 72, .20); filter: blur(7px);
+  transform-origin: 0 100%; transform: skewX(-59.04deg); pointer-events: none;
+}
+
+/* ===== device mockups: скелет страницы, окна, слоты, креативы ===== */
+.km-sk { height: 7px; border-radius: 2px; background: #E4ECEA; }
+.km-sk--d { background: #D3DFDB; }
+.km-bw-bar { display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-bottom: 1px solid var(--km-line-soft); }
+.km-bw-dot { width: 6px; height: 6px; border-radius: 50%; background: #D3DFDB; }
+.km-url {
+  margin-left: 8px; height: 16px; padding: 0 7px; display: inline-flex; align-items: center; border-radius: 4px;
+  background: #F1F6F4; font-family: var(--km-mono); font-size: 9.5px; color: var(--km-text-muted); white-space: nowrap;
+}
+.km-ad-i {
+  flex: none; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;
+  border-radius: 6px; background: var(--km-navy); color: #FFFFFF; font-size: 13px; font-weight: 700;
+}
+/* креатив внутри слота (.km-slot — моно) остаётся на основном шрифте */
+.km-ad-b, .km-ad-t, .km-ad-x, .km-ad-cta { font-family: var(--km-font); }
+.km-ad-b { font-size: 12px; font-weight: 600; color: var(--km-text-2); }
+.km-ad-t { font-size: 15px; line-height: 1.15; font-weight: 700; letter-spacing: -.01em; color: var(--km-text); }
+.km-ad-x { font-size: 12px; line-height: 1.35; color: var(--km-text-muted); }
+.km-ad-cta {
+  display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 4px;
+  background: var(--km-ink); color: #FFFFFF; font-size: 12.5px; font-weight: 600; white-space: nowrap;
+}
+.km-ad-tag {
+  font-family: var(--km-mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--km-text-soft); padding: 2px 4px; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--km-line);
+}
+/* ===== точечное поле — фирменный фоновый мотив =====
+   Один узор на всю страницу: заметно — hero, «Как работает», «Подключение»;
+   слабо — «Форматы». Поле всегда гаснет радиальной маской — без
+   прямоугольных краёв. Секция меняет только переменные:
+     --dot-mask    — форма и положение пятна (radial-gradient под композицию);
+     --dot-opacity — насыщенность, не выше базовой (1).
+   Не ставить за плотные интерфейсы: панель кампании, таблицы статистики, поля формы. */
+.km-dot-field {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, #C9D8D4 1.1px, transparent 1.5px); background-size: 22px 22px;
+  opacity: var(--dot-opacity, 1);
+  -webkit-mask-image: var(--dot-mask, radial-gradient(ellipse 70% 60% at 20% 40%, #000 20%, transparent 75%));
+  mask-image: var(--dot-mask, radial-gradient(ellipse 70% 60% at 20% 40%, #000 20%, transparent 75%));
+}
+
+/* ===== form fields ===== */
+.km-field { display: flex; flex-direction: column; gap: 7px; }
+.km-field__label { font-size: 13.5px; font-weight: 600; color: var(--km-text-2); }
+.km-input {
+  width: 100%; height: 48px; padding: 0 14px; border-radius: 7px; border: 0;
+  box-shadow: inset 0 0 0 1px var(--km-line-strong); background: var(--km-surface);
+  font-family: inherit; font-size: 15px; color: var(--km-text); outline: none; transition: box-shadow .2s;
+}
+.km-input:focus { box-shadow: inset 0 0 0 2px var(--km-brand); }
+.km-input::placeholder { color: var(--km-text-faint); }
+.km-input[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px #B42318; }
+textarea.km-input { height: 88px; padding: 12px 14px; resize: vertical; line-height: 1.45; }
+.km-field__error { display: flex; gap: 6px; align-items: flex-start; font-size: 13px; line-height: 1.4; color: #B42318; }
+
+@media (max-width: 767px) {
+  .km-input { font-size: 16px; }
+}
+
+/* ===== общие элементы сцен (hero, путь, «Как работает», «Контроль») ===== */
+.km-obj { position: absolute; z-index: 1; }
+.km-slot {
+  border-radius: 4px; outline: 1.5px dashed var(--km-brand); outline-offset: -1.5px; background: rgba(43, 179, 163, .07);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--km-mono); font-size: 12.5px; color: var(--km-brand-ink);
+}
+/* выноска-подпись к объекту сцены */
+.km-callout { position: absolute; font-family: var(--km-mono); font-size: 13px; line-height: 1.45; color: var(--km-text-2); }
+.km-callout--right::before { content: ""; display: block; width: 36px; height: 1px; background: var(--km-ink); margin-bottom: 8px; }
+/* подпись на линии связи */
+.km-link-lbl {
+  position: absolute; z-index: 3; padding: 2px 6px; border-radius: 4px; background: var(--km-surface);
+  box-shadow: inset 0 0 0 1px var(--km-line); font-family: var(--km-mono); font-size: 13px; color: var(--km-text-2); white-space: nowrap;
+}
+/* пунктирная связь: «течёт» только как фон, смысла в движении нет */
+.km-flow-line { fill: none; stroke: var(--km-brand-mist); stroke-width: 1.6; stroke-dasharray: 4 5; animation: km-flow 1.2s linear infinite; }
+.km-kv { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--km-line-faint); font-size: 14.5px; }
+.km-kv > :first-child { color: var(--km-text-muted); }
+.km-kv > :last-child { font-weight: 600; color: var(--km-text); text-align: right; }
+/* кнопка внутри макета кабинета — часть иллюстрации, не действие лендинга */
+.km-mock-btn {
+  display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 7px;
+  background: var(--km-brand-tint); box-shadow: inset 0 0 0 1.5px var(--km-brand);
+  font-size: 15px; font-weight: 600; color: var(--km-brand-deep); cursor: default;
+}
+@keyframes km-flow { to { stroke-dashoffset: -18; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .km *, .km *::before, .km *::after {
+    transition-duration: 0s !important; animation-duration: 0s !important; animation-iteration-count: 1 !important;
+  }
+}
